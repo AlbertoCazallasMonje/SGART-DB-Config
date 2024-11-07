@@ -9,12 +9,8 @@ ENV MSSQL_PID=Express
 COPY entrypoint.sh /usr/src/app/entrypoint.sh
 COPY init-db.sql /usr/src/app/init-db.sql
 
-# Cambia permisos para el script de entrada
-RUN chmod +x /usr/src/app/entrypoint.sh
-
 # Expone el puerto predeterminado de SQL Server
 EXPOSE 1433
 
-# Usa el script de entrada
-ENTRYPOINT ["bash", "/usr/src/app/entrypoint.sh"]
-
+# Usa bash para ejecutar el script sin necesidad de cambiar permisos
+CMD ["bash", "/usr/src/app/entrypoint.sh"]
