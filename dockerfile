@@ -8,9 +8,9 @@ ENV MSSQL_PID=Express
 # Cambia al usuario root para instalar paquetes
 USER root
 
-# Instala mssql-tools, unixodbc-dev y sudo para que sqlcmd esté disponible y se puedan elevar permisos
+# Instala mssql-tools y unixodbc-dev para que sqlcmd esté disponible
 RUN apt-get update && \
-    apt-get install -y mssql-tools unixodbc-dev sudo && \
+    apt-get install -y mssql-tools unixodbc-dev && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
@@ -27,8 +27,5 @@ RUN chmod +x /usr/src/app/entrypoint.sh
 # Expone el puerto predeterminado de SQL Server
 EXPOSE 1433
 
-# Cambia al usuario mssql para ejecutar SQL Server
-USER mssql
-
-# Ejecuta el script de entrada usando bash
+# Ejecuta el script de entrada usando bash sin cambiar el usuario
 CMD ["bash", "/usr/src/app/entrypoint.sh"]
