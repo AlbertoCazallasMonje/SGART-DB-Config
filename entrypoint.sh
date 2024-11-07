@@ -1,7 +1,7 @@
 #!/bin/bash
 
-# Inicia SQL Server en segundo plano con permisos elevados
-sudo /opt/mssql/bin/sqlservr &
+# Inicia SQL Server en segundo plano
+/opt/mssql/bin/sqlservr &
 
 # Espera hasta que SQL Server esté completamente inicializado
 sleep 30
