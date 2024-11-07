@@ -1,5 +1,5 @@
-# Usa la imagen oficial de SQL Server 2022 Express
-FROM mcr.microsoft.com/mssql/server:2022-latest
+# Usa la imagen oficial de SQL Server 2019 Express
+FROM mcr.microsoft.com/mssql/server:2019-latest
 
 # Establece variables de entorno
 ENV ACCEPT_EULA=Y
