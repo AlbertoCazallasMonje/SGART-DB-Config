@@ -6,11 +6,12 @@ ENV ACCEPT_EULA=Y
 ENV MSSQL_PID=Express
 
 # Copia los archivos necesarios
-COPY entrypoint.sh /usr/src/app/entrypoint.sh
-COPY init-db.sql /usr/src/app/init-db.sql
+COPY --chown=mssql:mssql entrypoint.sh /usr/src/app/entrypoint.sh
+COPY --chown=mssql:mssql init-db.sql /usr/src/app/init-db.sql
 
-# Expone el puerto predeterminado de SQL Server
+# Establece el puerto predeterminado de SQL Server
 EXPOSE 1433
 
-# Usa bash para ejecutar el script sin necesidad de cambiar permisos
+# Ejecuta el script de entrada usando bash
+USER mssql
 CMD ["bash", "/usr/src/app/entrypoint.sh"]
