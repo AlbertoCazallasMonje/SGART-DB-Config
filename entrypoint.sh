@@ -4,7 +4,7 @@
 /opt/mssql/bin/sqlservr &
 
 # Espera hasta que SQL Server esté completamente inicializado
-sleep 15
+sleep 30
 
 # Verifica si sqlcmd está disponible y ejecuta el script de inicialización
 if command -v sqlcmd > /dev/null; then
