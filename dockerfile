@@ -5,7 +5,10 @@ FROM mcr.microsoft.com/mssql/server:2022-latest
 ENV ACCEPT_EULA=Y
 ENV MSSQL_PID=Express
 
-# Instala mssql-tools para que sqlcmd esté disponible
+# Cambia al usuario root para instalar paquetes
+USER root
+
+# Instala mssql-tools y unixodbc-dev para que sqlcmd esté disponible
 RUN apt-get update && \
     apt-get install -y mssql-tools unixodbc-dev && \
     apt-get clean && \
@@ -21,8 +24,8 @@ COPY init-db.sql /usr/src/app/init-db.sql
 # Expone el puerto predeterminado de SQL Server
 EXPOSE 1433
 
-# Ejecuta el contenedor como root para asegurar permisos
-USER root
+# Cambia de nuevo al usuario mssql para ejecutar SQL Server
+USER mssql
 
 # Ejecuta el script de entrada usando bash
 CMD ["bash", "/usr/src/app/entrypoint.sh"]
