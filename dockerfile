@@ -3,7 +3,7 @@ FROM mcr.microsoft.com/mssql/server:2022-latest
 
 # Establece variables de entorno
 ENV ACCEPT_EULA=Y
-ENV MSSQL_PID=Express
+ENV MSSQL_PID=Developer
 
 # Copia los archivos necesarios
 COPY --chown=mssql:mssql entrypoint.sh /usr/src/app/entrypoint.sh
