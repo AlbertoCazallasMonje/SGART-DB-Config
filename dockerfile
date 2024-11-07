@@ -16,4 +16,5 @@ RUN chmod +x /usr/src/app/entrypoint.sh
 EXPOSE 1433
 
 # Usa el script de entrada
-ENTRYPOINT ["/usr/src/app/entrypoint.sh"]
+ENTRYPOINT ["bash", "/usr/src/app/entrypoint.sh"]
+
